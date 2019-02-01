@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Lekker registeren</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="JS/auth.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="CSS/main.css" />
+</head>
+<body>
+    <main>
+        <h2>Registreren</h2>
+        <form class="registerform"> 
+            <label for="vnaam">Voornaam</label><br>
+            <input name="name" id ="vnaam" type="text"><br>
+            <label for="anaam">Achternaam</label><br>
+            <input name="surname" id="anaam" type="text"><br>
+            <label for="email">Email</label><br>
+            <input name="email" id="email" type="email"><br>
+            <label for="pword">Password</label><br>
+            <input name="password" id="pword" type="password"><br>
+            <label for="pword_repeat">Repeat password</label><br>
+            <input name="passwordRepeat" id="pword_repeat" type="password"><br><br>
+            <input type="submit" value="Submit">
+            <a href="/">Terug naar login</a>
+        </form>
+        <p id="formerror"></p>
+    </main>
+</body>
+</html>

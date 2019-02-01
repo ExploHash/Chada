@@ -1,0 +1,36 @@
+body{
+    background: url(https://proxy.duckduckgo.com/iu/?u=http%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fa%2Faa%2FKoepel_%2528Hoofdstraat%252C_Driebergen%2529.jpg&f=1);
+    background-size: cover;
+}
+
+div {
+    box-sizing: border-box;
+    width: 100%;
+    height: 300px;
+    margin: 0px;
+    padding: 10px;
+    border: gray solid 3px;
+    overflow: auto;
+}
+
+button{
+    margin-left: 20px;
+}
+
+main{
+    position: relative;
+    width: 400px;
+    margin: auto;
+    padding: 40px;
+    background-color:white;
+    border-radius: 15px;
+    display: block;
+}
+
+#text{
+    box-sizing: border-box;
+    margin-top: 2px;
+    width: 100%;
+    border: gray solid 3px;
+    padding: 0px;
+}
