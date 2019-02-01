@@ -24,7 +24,10 @@ var auth = {
             }else{
                 auth.showMessage("Succesvol");
             }
-            window.location = "/chat"
+            //small delay to give server the time to update the sessie
+            setTimeout(function(){
+                window.location = "/chat"
+            }, 500);
         }).fail(function(data){
             if(data.responseJSON.message){
                 auth.showMessage(data.responseJSON.message);
