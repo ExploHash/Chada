@@ -12,7 +12,7 @@ module.exports = {
             if(session && session.name){//check of die bestaat voor authorizatie
                 console.log("AUTHORIZED");
                 socket.join('room1', function(){//join een room
-                    socket.broadcast.to('room1').emit('message', "Connected " + session.name);
+                    socket.broadcast.to('room1').emit('message', session.name + " is online");
                     socket.on('message', function(msg){//wanneer er een bericht wordt ontvangen
                         let session = self.getSession(socket); //check opnieuw voor sessie
                         if(session && session.name){//opnieuw check authorisatie
@@ -27,6 +27,9 @@ module.exports = {
                 socket.disconnect('unauthorized');
             }
             socket.on('disconnect', function(){
+                if(session && session.name){
+                    socket.broadcast.to('room1').emit('message', session.name + " is nu offline");
+                }
                 console.log("DISCONNECT");
             });
         });
@@ -34,12 +37,13 @@ module.exports = {
     getSession(socket){
         //haal het sid van de cookie
         var cookie = socket.client.request.headers.cookie;
-        var location = cookie.indexOf("connect.sid") + 12; 
-        var sid = cookie.substring(location + 4, cookie.indexOf(";", location)).split(".")[0];
+        var sidStart = cookie.indexOf("connect.sid") + 16; 
+        var sidEnd = cookie.indexOf(".", sidStart);
+        var sid = cookie.substring(sidStart, sidEnd);
 
         var sids = Object.keys(this.store.sessions);
         if(sids.includes(sid)){//loop door de ids van de memorystore om te kijke of die bestaat
-            var session = JSON.parse(this.store.sessions[sid]); //verkijg de sessie en parse hem
+            let session = JSON.parse(this.store.sessions[sid]); //verkijg de sessie en parse hem
             if(session.isLoggedIn){//check of de user is ingelogd
                 return session;
             }else{
