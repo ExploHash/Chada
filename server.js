@@ -33,6 +33,6 @@ app.set('views', './pages');
 app.use(express.static("public"));
 app.use('/', index);
 app.use("/api", api);
-http.listen(8080, function(){
-  console.log('listening on localhost:8080');
+http.listen(80, function(){
+  console.log('listening on localhost:80');
 });
